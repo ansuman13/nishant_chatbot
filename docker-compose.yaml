@@ -1,0 +1,13 @@
+services:
+  chatbot:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - "elasticsearch"
+  elasticsearch:
+    image: "elasticsearch:7.17.14"
+    ports:
+      - "9200:9200"
+    environment:
+      - discovery.type=single-node
